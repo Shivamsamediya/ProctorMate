@@ -7,9 +7,13 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:5173', // Allowing requests from your frontend URL
+    origin:[ 'http://localhost:5173','https://proctor-mate-frontend.vercel.app/'], // Allowing requests from your frontend URL
     credentials: true,            
   }));
+
+app.get('/', (req,res,next) =>{
+  res.send("Hello");
+});
 
 //routes
 app.use('/auth', authRoutes);
