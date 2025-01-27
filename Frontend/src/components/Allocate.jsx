@@ -43,7 +43,7 @@ const Allocate = () => {
       // Get the token from localStorage
       const token = localStorage.getItem('token');
       await axios.post(
-        'http://localhost:8000/allocation/allocate',
+        'https://proctor-mate-backend.vercel.app/allocation/allocate',
         payload,
         {
           // Send the token in the request headers

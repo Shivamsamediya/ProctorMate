@@ -12,7 +12,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8000/auth/signup', { collegeName, email, password });
+      const res = await axios.post('https://proctor-mate-backend.vercel.app/auth/signup', { collegeName, email, password });
       toast.success("Signup Successfull!!")
       localStorage.setItem('Admin', JSON.stringify(res.data.admin));
       localStorage.setItem('token', (res.data.admin.token));

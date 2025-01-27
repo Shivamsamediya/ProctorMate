@@ -30,7 +30,7 @@ const Dashboard = () => {
           },
         };
 
-        const { data } = await axios.get('http://localhost:8000/allocation/allocations', config);
+        const { data } = await axios.get('https://proctor-mate-backend.vercel.app/allocation/allocations', config);
         console.log('Allocations fetched:', data);
 
         if (Array.isArray(data)) {
@@ -83,7 +83,7 @@ const Dashboard = () => {
   // Function to delete all allocations
   const deleteAllocations = async () => {
     try {
-      await axios.delete('http://localhost:8000/allocation/allocations', {
+      await axios.delete('https://proctor-mate-backend.vercel.app/allocation/allocations', {
         headers: {
           Authorization: `Bearer ${token}`,
         },

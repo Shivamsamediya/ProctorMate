@@ -14,7 +14,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8000/auth/login',{email,password});
+      const res = await axios.post('https://proctor-mate-backend.vercel.app/auth/login',{email,password});
       toast.success("Loggedin Successfully!!");
       localStorage.setItem('Admin', JSON.stringify(res.data.admin));
       localStorage.setItem('token', (res.data.admin.token));
