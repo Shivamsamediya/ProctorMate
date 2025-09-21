@@ -7,6 +7,7 @@ import Allocate from './components/Allocate'
 import Dashboard from './components/Dashboard'
 import Signup from './components/Signup'
 import Login from './components/Login'
+import AdminManageData from './components/AdminManageData'
 
 import {Navigate, Route,Routes} from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
@@ -34,6 +35,7 @@ function App() {
         <Route path="/allocate"  element={authUser?<Allocate />:<Navigate to="/login" />}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/about-us' element={<About/>}/>
+        <Route path="/manage" element={<AdminManageData />} />
       </Routes>
       <Toaster/>
     </>

@@ -33,6 +33,9 @@ function Navbar() {
                 <a href='/dashboard' className='text-md font-medium hover:text-blue-600 transition-colors duration-300'>Dashboard</a>
             </li>
             <li>
+                <a href='/manage' className='text-md font-medium hover:text-blue-600 transition-colors duration-300'>Manage</a>
+            </li>
+            <li>
                 <a href='/contact' className='text-md font-medium hover:text-blue-600 transition-colors duration-300'>Contact</a>
             </li>
             <li>

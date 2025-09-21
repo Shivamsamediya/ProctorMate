@@ -1,6 +1,8 @@
 import express from 'express';
 import authRoutes from './routes/auth.routes.js';
 import allocationRoutes from './routes/allocations.routes.js';
+import hallsRoutes from './routes/hall.routes.js';
+import teachersRoutes from './routes/teacher.routes.js';
 import cors from 'cors';
 
 const app = express();
@@ -18,5 +20,7 @@ app.get('/', (req,res,next) =>{
 //routes
 app.use('/auth', authRoutes);
 app.use('/allocation', allocationRoutes);
+app.use('/halls', hallsRoutes);
+app.use('/teachers', teachersRoutes);
 
 export default app;
