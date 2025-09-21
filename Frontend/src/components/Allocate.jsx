@@ -42,7 +42,7 @@ const Allocate = () => {
       if (!token) throw new Error('Token is missing');
 
       await axios.post(
-        `${API}/allocate`,
+        `${API}/allocations/allocate`,
         { date, hall, teachers },
         { headers: { Authorization: `Bearer ${token}` } }
       );
