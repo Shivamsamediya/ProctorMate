@@ -53,13 +53,13 @@ export const loginAdmin = async (req, res) => {
         const admin = await Admin.findOne({ email });
 
         if (!admin) {
-            return res.status(400).json({ message: 'Invalid email or password' });
+            return res.status(400).json({ message: 'Invalid email!' });
         }
 
         const isMatch = await bcrypt.compare(password, admin.password);
 
         if (!isMatch) {
-            return res.status(400).json({ message: 'Invalid email or password' });
+            return res.status(400).json({ message: 'Invalid password!' });
         }
 
         // Generate JWT token for the logged-in admin

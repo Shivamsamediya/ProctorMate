@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import Navbar from './Navbar';
 
 const API = 'https://proctor-mate-backend.vercel.app';
 
@@ -36,11 +37,7 @@ const AdminManageData = () => {
     if (!newHall) return toast.error('Hall number is required');
     try {
       const token = localStorage.getItem('token');
-      await axios.post(
-        `${API}/halls`,
-        { number: newHall },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      await axios.post(`${API}/halls`, { number: newHall }, { headers: { Authorization: `Bearer ${token}` } });
       toast.success('Hall added successfully');
       setNewHall('');
       fetchData();
@@ -53,9 +50,7 @@ const AdminManageData = () => {
   const removeHall = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`${API}/halls/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(`${API}/halls/${id}`, { headers: { Authorization: `Bearer ${token}` } });
       toast.success('Hall removed successfully');
       fetchData();
     } catch (error) {
@@ -68,11 +63,7 @@ const AdminManageData = () => {
     if (!newTeacher) return toast.error('Teacher name is required');
     try {
       const token = localStorage.getItem('token');
-      await axios.post(
-        `${API}/teachers`,
-        { name: newTeacher },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      await axios.post(`${API}/teachers`, { name: newTeacher }, { headers: { Authorization: `Bearer ${token}` } });
       toast.success('Teacher added successfully');
       setNewTeacher('');
       fetchData();
@@ -85,9 +76,7 @@ const AdminManageData = () => {
   const removeTeacher = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`${API}/teachers/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(`${API}/teachers/${id}`, { headers: { Authorization: `Bearer ${token}` } });
       toast.success('Teacher removed successfully');
       fetchData();
     } catch (error) {
@@ -97,14 +86,16 @@ const AdminManageData = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-8 bg-white shadow-lg rounded-lg mt-10">
-      <h2 className="text-2xl font-bold text-center text-blue-700 mb-6">Manage Halls</h2>
+    <>
+      <Navbar/>
+      <div className="max-w-2xl mx-auto p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg mt-10">
+      <h2 className="text-2xl font-bold text-center text-blue-700 dark:text-blue-400 mb-6">Manage Halls</h2>
       <div className="flex gap-2 mb-4">
         <input
           value={newHall}
           onChange={(e) => setNewHall(e.target.value)}
           placeholder="Hall No"
-          className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
         <button
           onClick={addHall}
@@ -117,9 +108,9 @@ const AdminManageData = () => {
         {halls.map((hall) => (
           <li
             key={hall._id}
-            className="flex justify-between items-center py-2 px-3 bg-gray-50 rounded mb-2 border border-gray-100"
+            className="flex justify-between items-center py-2 px-3 bg-gray-50 dark:bg-gray-700 rounded mb-2 border border-gray-100 dark:border-gray-600"
           >
-            <span className="text-gray-700">{hall.number}</span>
+            <span className="text-gray-700 dark:text-gray-200">{hall.number}</span>
             <button
               onClick={() => removeHall(hall._id)}
               className="text-red-600 hover:text-white hover:bg-red-500 px-3 py-1 rounded transition"
@@ -130,13 +121,13 @@ const AdminManageData = () => {
         ))}
       </ul>
 
-      <h2 className="text-2xl font-bold text-center text-blue-700 mb-6">Manage Teachers</h2>
+      <h2 className="text-2xl font-bold text-center text-blue-700 dark:text-blue-400 mb-6">Manage Teachers</h2>
       <div className="flex gap-2 mb-4">
         <input
           value={newTeacher}
           onChange={(e) => setNewTeacher(e.target.value)}
           placeholder="Teacher Name"
-          className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
         <button
           onClick={addTeacher}
@@ -149,9 +140,9 @@ const AdminManageData = () => {
         {teachers.map((teacher) => (
           <li
             key={teacher._id}
-            className="flex justify-between items-center py-2 px-3 bg-gray-50 rounded mb-2 border border-gray-100"
+            className="flex justify-between items-center py-2 px-3 bg-gray-50 dark:bg-gray-700 rounded mb-2 border border-gray-100 dark:border-gray-600"
           >
-            <span className="text-gray-700">{teacher.name}</span>
+            <span className="text-gray-700 dark:text-gray-200">{teacher.name}</span>
             <button
               onClick={() => removeTeacher(teacher._id)}
               className="text-red-600 hover:text-white hover:bg-red-500 px-3 py-1 rounded transition"
@@ -162,6 +153,7 @@ const AdminManageData = () => {
         ))}
       </ul>
     </div>
+    </>
   );
 };
 

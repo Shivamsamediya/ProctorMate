@@ -5,7 +5,7 @@ function Footer() {
   return (
     <>
     <hr />
-    <footer className="footer footer-center p-10 bg-base-100 text-base-content rounded  dark:bg-slate-900 dark:text-white">
+    <footer className="footer footer-center p-10 bg-base-100 text-base-content rounded  dark:bg-gray-600 dark:text-white">
         <nav className="grid grid-flow-col gap-4">
             <a href='/about-us' className="btn decoration-transparent transition-all duration-300 transform hover:scale-105">About us</a>
             <a href='/contact' className="btn decoration-transparent transition-all duration-300 transform hover:scale-105">Contact</a>
